@@ -105,6 +105,8 @@ export class AppComponent implements OnInit {
       this.deleteEmployee = employee;
       button.setAttribute('data-target', '#deleteEmployeeModal');
     }
+    if (mode === 'update') {
+    }
     container.appendChild(button);
     button.click();
   }
