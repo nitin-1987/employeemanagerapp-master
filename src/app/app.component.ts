@@ -3,7 +3,7 @@ import { Employee } from './employee';
 import { EmployeeService } from './employee.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
-
+import {Router, RouterModule, Routes} from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -13,8 +13,8 @@ export class AppComponent implements OnInit {
   public employees: Employee[];
   public editEmployee: Employee;
   public deleteEmployee: Employee;
-
-  constructor(private employeeService: EmployeeService){}
+  public searchEmployee: Employee;
+  constructor(private employeeService: EmployeeService, private router: Router){}
 
   ngOnInit() {
     this.getEmployees();
@@ -27,7 +27,8 @@ export class AppComponent implements OnInit {
         console.log(this.employees);
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        this.router.navigate(['../404']);
+
       }
     );
   }
@@ -84,7 +85,7 @@ export class AppComponent implements OnInit {
     }
     this.employees = results;
     if (results.length === 0 || !key) {
-      this.getEmployees();
+      //this.getEmployees();
     }
   }
 
