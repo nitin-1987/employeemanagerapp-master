@@ -16,7 +16,7 @@
   </div>
 </nav>
 <h1>Parent App Component</h1>
-<p>Enter Parent App-Component Value : </p><input type="text" #ptext (keyup)="0"/><b>
+<p>Enter Parent App-Component Value : <input type="text" #ptext (keyup)="0"/></p><b>
   <p>Value from Child {{childData}}</p>
 <p>Value from Child Component is: </p><app-employee1 [parentText]="ptext.value" (childEvent)="childData=$event"></app-employee1>
 
